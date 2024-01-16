@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: "Oswald";
+  background-color: aliceblue;
+}
+.header {
+  background-color: #424769;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  height: 40px;
+  /* justify-content:space-evenly */
+}
+img {
+  width: 30px;
+  height: 30px;
+  border-radius: 40%;
+}
+a {
+  border: 1px solid black;
+  padding: 6px;
+  width: 50px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
+  background-color: #fbf6ee;
+  word-wrap: break-word;
+  font-size: 12px;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #86a789;
+  color: white;
+}
+.header-left {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.header-left div {
+  font-size: 14px;
+  margin-left: 20px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: azure;
+  cursor: pointer;
+}
+.header-left div:hover {
+  color: rgb(177, 173, 233);
+}
+
+.header-right {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: end;
+}
+
+input[type="text"] {
+  margin-left: 10px;
+  border-radius: 5px;
+  width: 300px;
+  padding: 8px;
+}
+
+.dropdown {
+  overflow: hidden;
+  display: flex;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-top: 40px;
+}
+
+.dropdown-content a {
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #86a789;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+  background-color: aliceblue;
+   
+  }
+  img {
+    width: 20px;
+    height: 20px;
+  }
+  a {
+    padding: 0px;
+    margin: 1px;
+    height: 20px;
+    font-size: small;
+  }
+
+  
+
+  input[type="text"] {
+    margin-left: 0px;
+    width: 100px;
+    height: 20px;
+    border-radius: 10px;
+    padding: 2px;
+    margin-left: 5px;
+  }
+}

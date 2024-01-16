@@ -20,26 +20,6 @@ if(isset($_POST['submit'])){
     {
         die("Connection failed!" . mysqli_connect_error());
     }
-    // //This below line is a code to Send form entries to database
-    // $sql = "INSERT INTO signup (id, name, email, password) VALUES ('0', '$name', '$email', '$password')";
-    
-    // //fire query to save entries and check it with if statement
-    // $rs = mysqli_query($con, $sql);
-    // if($rs)
-    // {
-    //     echo "Message has been sent successfully!";
-      
-    //     header("Location: login.html");
-      
-    // }
-    // else{
-    //     echo "Error, Message didn't send! Something's Wrong."; 
-    // }
-    // //connection closed.
-    // mysqli_close($con);
-
-
-
 
       // Check if email already exists
       $checkEmailQuery = "SELECT COUNT(*) as count FROM signup WHERE email = '$email'";
@@ -60,7 +40,8 @@ if(isset($_POST['submit'])){
   
           if ($rs) {
               echo "Message has been sent successfully!";
-              header("Location: login.html");
+              echo '<script>alert("You have successfully registered")</script>';
+              header("Location: ../Login/login.html");
           } else {
               echo "Error, Message didn't send! Something's Wrong.";
           }
