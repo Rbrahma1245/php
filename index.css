@@ -65,34 +65,25 @@ input[type="text"] {
   padding: 8px;
 }
 
-.dropdown {
-  overflow: hidden;
-  display: flex;
+/* IMAGE FOOD */
+
+.food {
+  border-radius: 5px;
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  margin-top: 40px;
-}
-
-.dropdown-content a {
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #86a789;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+h2 {
+  margin: 12px 8px;
+  font-size: 38px;
+  color: #4f6f52;
+  font-family: "Salsa";
 }
 
 @media only screen and (max-width: 600px) {
   body {
-  background-color: aliceblue;
-   
+    background-color: aliceblue;
   }
   img {
     width: 20px;
@@ -104,8 +95,6 @@ input[type="text"] {
     height: 20px;
     font-size: small;
   }
-
-  
 
   input[type="text"] {
     margin-left: 0px;
