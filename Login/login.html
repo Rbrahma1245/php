@@ -115,19 +115,23 @@
               // Parse the JSON response
               const responseData = JSON.parse(request.responseText);
 
-              let x = responseData.find(
+              let userData = responseData.find(
                 (e, i) => e.email == email && e.password == password
               );
-              console.log(x);
-              if (x == undefined) {
+              console.log(userData);
+              if (userData == undefined) {
                 Swal.fire({
                   icon: "error",
                   text: "Invalid Credentials",
                 });
               } else {
+                Swal.fire("Login Success");
                 document.getElementById(
                   "display"
-                ).innerHTML = `<h2>Name : ${x.name}</h2> <p> Email : ${x.email}</p>`;
+                ).innerHTML = `<h2>Name : ${userData.name}</h2> <p> Email : ${userData.email}</p>`;
+                e.target.email.value = ""
+                e.target.password.value = ""
+
               }
             }
           }
