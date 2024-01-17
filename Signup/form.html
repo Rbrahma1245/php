@@ -67,9 +67,10 @@
     <div
       class="d-flex flex-column justify-content-center align-items-center mt-5"
     >
-      <form id="form" >
-        <h4 style="margin-bottom: 2rem">LOGIN</h4>
-
+      <form id="form">
+        <h4 style="margin-bottom: 2rem">Sign Up</h4>
+        <input type="text" name="name" placeholder="Enter Your Name" required />
+        <br />
         <input
           type="email"
           name="email"
@@ -84,50 +85,49 @@
           required
         />
         <br />
+
         <div class="d-grid gap-2 mt-2 mb-3">
-          <button class="btn" name="submit" type="submit">Login</button>
+          <button class="btn" name="submit" type="submit">Sign Up</button>
         </div>
 
         <div>
-          <p>Don't have an account ? <a href="../Signup/signup.html">Sign Up</a></p>
+          <p>
+            Already have an account ? <a href="../Login/login.html">Log In</a>
+          </p>
         </div>
       </form>
     </div>
-    <div id="display"></div>
 
+    <!-- SWEET ALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+
+    <!-- AJAX -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
       let form = document.getElementById("form");
 
-      $(document).ready(()=>{
-        $("#form").submit((e)=>{
-            e.preventDefault();
+      $(document).ready(() => {
+        $("#form").submit(function (e) {
+          e.preventDefault();
 
-            let data = new FormData($("#form")[0]);
-            let formArr = []
-            for(let val of data.entries()){
-                formArr.push(val)
-            }
-        
+          let formData = $(this).serialize();
+          console.log(formData);
 
-            $.ajax({
-                type: "POST",
-                url: "../Signup/form.php",
-                data : formArr,
-                dataType: "json",
-                success : (res)=>{
-                    console.log(res ," from result");
-                },
-                error : (err)=>{
-                    console.log(err, 'from');
-                }
-            });
+          $.ajax({
+            type: "POST",
+            url: "./form.php",
+            data: formData,
+            dataType: "json",
+            success: (res) => {
+              console.log(res, " from result");
+            },
+            error: (err) => {
+              console.log(err, "from error");
+            },
+          });
         });
       });
-
-      
     </script>
   </body>
 </html>

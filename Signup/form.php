@@ -1,11 +1,20 @@
 <?php
 
+$data = file_get_contents("php://input");
+
+$formData = json_decode($data);
+echo json_encode($formData);
+
+echo $_POST['data'];
+
+
 if(isset($_POST['submit'])){
     // getting and storing inputs in variables
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    echo "HELLLOOO";
 
     //database details. we have created these details in the PHP my admin.
     $host = "localhost";
