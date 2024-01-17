@@ -27,10 +27,10 @@ if(isset($_POST['submit'])){
       $emailExists = mysqli_fetch_assoc($checkEmailResult)['count'];
   
       if ($emailExists > 0) {
-          // Email already exists, show error message
+        //   Email already exists, show error message
           echo '<script>alert("Email already exists. Please choose a different email!")</script>';
-          
-       
+          echo '<script>window.location.href = "./signup.html"</script>';   
+          exit();
       } else {
           // Email doesn't exist, proceed with the INSERT query
           $sql = "INSERT INTO signup (id, name, email, password) VALUES ('0', '$name', '$email', '$password')";
@@ -41,7 +41,8 @@ if(isset($_POST['submit'])){
           if ($rs) {
               echo "Message has been sent successfully!";
               echo '<script>alert("You have successfully registered")</script>';
-              header("Location: ../Login/login.html");
+              echo '<script>window.location.href = "../Login/login.html"</script>';
+              exit();
           } else {
               echo "Error, Message didn't send! Something's Wrong.";
           }
