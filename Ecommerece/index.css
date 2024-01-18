@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: "Oswald";
+    background-color: aliceblue;
+  }
+  .header {
+    background-color: #424769;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    height: 40px;
+    /* justify-content:space-evenly */
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 40%;
+  }
+
+  .header-left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+  .header-left div {
+    font-size: 14px;
+    margin-left: 20px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: azure;
+    cursor: pointer;
+  }
+  .header-left div:hover {
+    color: rgb(177, 173, 233);
+  }
+  
+  .header-right {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: end;
+  }
+  
+  input[type="text"] {
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 300px;
+    padding: 8px;
+  }
+  
+ 
+
+
+
+
+
+  .header-img{
+    height: 230px;
+  }
+  
+
+  .card-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+  }
+  #toggleButton {
+    display: block;
+  }
+  
+
+  .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
