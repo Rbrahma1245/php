@@ -116,9 +116,9 @@
 
           $.ajax({
             type: "POST",
-            url: "./form.php",
+            url: "form.php",
             data: formData,
-            dataType: "json",
+            // dataType: "json",
             success: (res) => {
               console.log(res, " from result");
             },

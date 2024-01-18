@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css?family=Salsa"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./indexx.css" />
 
     <!-- BOOTSTRAP -->
     <link
@@ -45,14 +45,13 @@
       let globalArr;
       let str = "";
 
-      const apiKey = "0bf242140893456a96c0da4ef9d665dd";
-      const apiUrl = "https://api.spoonacular.com/recipes/random";
+      const apiUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
       let getData = async () => {
         try {
-          let response = await fetch(`${apiUrl}?apiKey=${apiKey}`);
+          let response = await fetch(apiUrl);
           let data = await response.json();
-          globalArr = data.recipes;
+          globalArr = data.categories;
 
           displayData(globalArr);
         } catch (err) {
@@ -61,27 +60,44 @@
       };
       getData();
 
-      function displayData(arrList) {
-        arrList.map((e, i) => {
-          let { id, title, image, summary } = e;
+      function printData(list) {
+        let { idCategory, strCategory, strCategoryDescription } = list;
 
-          console.log(e);
-
-          str =
-            str +
-            `  <div class="card " key=${id + "" + i} style="width: 28rem;">
-                    <img src=${image} class="card-img-top header-img" alt="Invalid">
+        let str = `  <div class="card " key=${idCategory} style="width: 28rem;">
+                   
                     <div class="card-body">
-                         <h5 class="card-title">${title}</h5>
-                         <p class="card-text" id=${"desc" + id}>${summary}</p>
+                         <h5 class="card-title">${strCategory}</h5>
+                         <p class="card-text desc-text" id=${
+                           "desc" + idCategory
+                         }>${strCategoryDescription}</p>
                          <a  id=${
-                           "toggle" + id
-                         } onclick="toggleText(${id})" class="btn btn-primary float-right">Read More</a>
+                           "toggle" + idCategory
+                         } onclick="toggleText(${idCategory})" class="btn btn-primary float-end">Read More</a>
+
+                         <button onClick="prevItem(${idCategory})" class="btn btn-outline-info" >PREV</button>
+
+                         <button onClick="nextItem(${idCategory})" class="btn btn-outline-secondary">NEXT</button>
                          
                     </div>
                 </div>`;
-          container.innerHTML = str;
-        });
+        container.innerHTML = str;
+      }
+
+      function displayData(arrList) {
+        printData(arrList[0]);
+      }
+
+      function nextItem(id) {
+        let item = globalArr[id++];
+        console.log(item);
+        printData(item);
+      }
+
+      function prevItem(id) {
+        console.log(--id);
+        let item = globalArr[--id];
+        console.log(item);
+        printData(item);
       }
 
       function toggleText(id) {
@@ -90,15 +106,17 @@
         let descText = document.getElementById(`${"desc" + id}`);
         let toggleButton = document.getElementById("toggle" + id);
 
-        if (descText.style.whiteSpace === "normal") {
-          descText.style.whiteSpace = "nowrap";
+        if (descText.style.display === "inline-block") {
           descText.style.overflow = "hidden";
+          descText.style.display = "-webkit-box";
+          descText.style.webkitLineClamp = "3";
           descText.style.textOverflow = "ellipsis";
           toggleButton.textContent = "Read More";
         } else {
           descText.style.whiteSpace = "normal";
+          descText.style.whiteSpace = "normal";
+          descText.style.display = "inline-block";
           descText.style.overflow = "visible";
-          descText.style.textOverflow = "clip";
           toggleButton.textContent = "Show Less";
         }
       }

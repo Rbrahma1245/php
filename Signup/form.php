@@ -1,20 +1,9 @@
 <?php
 
-$data = file_get_contents("php://input");
-
-$formData = json_decode($data);
-echo json_encode($formData);
-
-echo $_POST['data'];
-
-
-if(isset($_POST['submit'])){
     // getting and storing inputs in variables
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    echo "HELLLOOO";
+    $pwd = $_POST['password'];
 
     //database details. we have created these details in the PHP my admin.
     $host = "localhost";
@@ -42,7 +31,7 @@ if(isset($_POST['submit'])){
           exit();
       } else {
           // Email doesn't exist, proceed with the INSERT query
-          $sql = "INSERT INTO signup (id, name, email, password) VALUES ('0', '$name', '$email', '$password')";
+          $sql = "INSERT INTO signup (id, name, email, password) VALUES ('0', '$name', '$email', '$pwd')";
   
           // fire query to save entries and check it with if statement
           $rs = mysqli_query($con, $sql);
@@ -56,6 +45,6 @@ if(isset($_POST['submit'])){
               echo "Error, Message didn't send! Something's Wrong.";
           }
         }
-}
+
 
 ?>
