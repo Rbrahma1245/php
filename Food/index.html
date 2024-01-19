@@ -23,7 +23,14 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+
+    <!-- Snackbar -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/snackbarjs@1.1.0/dist/snackbar.min.css"
+    />
   </head>
+
   <body>
     <header class="header">
       <div class="header-left">
@@ -39,6 +46,8 @@
       class="d-flex mt-5 flex-wrap justify-content-center"
     ></div>
 
+    <!-- SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
     <script>
       let container = document.getElementById("container");
 
@@ -60,11 +69,16 @@
       };
       getData();
 
-      function printData(list) {
-        let { idCategory, strCategory, strCategoryDescription, strCategoryThumb } = list;
+      function printItem(list) {
+        let {
+          idCategory,
+          strCategory,
+          strCategoryDescription,
+          strCategoryThumb,
+        } = list;
 
         str = `  <div class="card " key=${idCategory} style="width: 25rem;">
-                  <img src=${strCategoryThumb} class="card-img-top header-img" alt="Invalid">           
+                    <img src=${strCategoryThumb} class="card-img-top header-img" alt="Invalid">           
                     <div class="card-body">
                          <h5 class="card-title">${strCategory}</h5>
                          <p class="card-text desc-text" id=${
@@ -84,20 +98,30 @@
       }
 
       function displayData(arrList) {
-        printData(arrList[0]);
+        printItem(arrList[0]);
       }
 
       function nextItem(id) {
         let item = globalArr[id++];
-        console.log(item);
-        printData(item);
+
+        if (item == undefined) {
+          Swal.fire("Oops! It seems like there are no more items.");
+        } else {
+          console.log(item);
+          printItem(item);
+        }
       }
 
       function prevItem(id) {
         console.log(--id);
         let item = globalArr[--id];
-        console.log(item);
-        printData(item);
+
+        if (item == undefined) {
+          Swal.fire("Oops! It seems like there are no more items.");
+        } else {
+          console.log(item);
+          printItem(item);
+        }
       }
 
       function toggleText(id) {
