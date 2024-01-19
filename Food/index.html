@@ -61,10 +61,10 @@
       getData();
 
       function printData(list) {
-        let { idCategory, strCategory, strCategoryDescription } = list;
+        let { idCategory, strCategory, strCategoryDescription, strCategoryThumb } = list;
 
-        let str = `  <div class="card " key=${idCategory} style="width: 28rem;">
-                   
+        str = `  <div class="card " key=${idCategory} style="width: 25rem;">
+                  <img src=${strCategoryThumb} class="card-img-top header-img" alt="Invalid">           
                     <div class="card-body">
                          <h5 class="card-title">${strCategory}</h5>
                          <p class="card-text desc-text" id=${
@@ -113,8 +113,6 @@
           descText.style.textOverflow = "ellipsis";
           toggleButton.textContent = "Read More";
         } else {
-          descText.style.whiteSpace = "normal";
-          descText.style.whiteSpace = "normal";
           descText.style.display = "inline-block";
           descText.style.overflow = "visible";
           toggleButton.textContent = "Show Less";
